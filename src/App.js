@@ -18,7 +18,7 @@ function App() {
           <div className="w-full block lg:w-auto">
             <div className="text-lg lg:flex-grow">
               <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                About
+                Aboutt
               </a>
             </div>
           </div>
