@@ -13,7 +13,13 @@ body {
 .customBlueLight {
     background-color: #3B5998;
 }
+
 .customBlueDark {
     background-color: #293E6A;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
 
