@@ -1,8 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function StatsCard({ global, countries }) {
-
-    
     
     return (
         <div className="w-full h-full max-w-md sm:w-2/3 lg:w-1/2 sm:my-5 relative z-10  rounded-lg shadow-lg border-b-4 border-yellow-400 bg-white">
@@ -27,7 +26,7 @@ function StatsCard({ global, countries }) {
                   </div>
 
                   <div id="jh-stats-neutral" className="flex flex-col justify-center px-1 border-b-4 border-yellow-300 rounded">
-                      <p className="text-2xl font-semibold text-center text-green-500">{global['TotalRecovered'] ? global['TotalRecovered']:"100"}</p>
+                      <p className="text-2xl font-semibold text-center text-green-500">{global['TotalRecovered'] ? global['TotalRecovered']:"0"}</p>
                       <p className="text-md text-center text-gray-600">Total number of recoveries</p>
                   </div>
                 </div>
@@ -38,6 +37,12 @@ function StatsCard({ global, countries }) {
               </div>
         </div>
     )
+}
+
+// Proptype to determine the type of prop being used
+StatsCard.propTypes = {
+    global: PropTypes.array.isRequired,
+    countries: PropTypes.array.isRequired
 }
 
 export default StatsCard

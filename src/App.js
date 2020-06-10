@@ -58,7 +58,7 @@ class App extends Component {
 
 
     render() {
-        const { countries, global, errorMessage, errorStatus, countNUmberOfCountries } = this.state;
+        const { countries, global, errorMessage, errorStatus } = this.state;
 
         return (
             <Router>
@@ -67,16 +67,13 @@ class App extends Component {
               < Header />
               {/* Error Messgae */}
               <ErrorMessage errorMessage={errorMessage} errorStatus={errorStatus} />
-                {/* <h1>{countries.map(location => (
-                <li key={location.id}>{location.country}</li> //Always remember to pass a key whne mapping through a list
-              ))}</h1> */}
               <div className="container mx-auto my-10">
                 <div className="container max-w-full mx-auto py-2">
                   <div className="relative block flex flex-col md:flex-row items-center">
                     <Route exact path="/" render={props => (
                       <React.Fragment>
                         {/* Graph Card */}
-                        <GraphCard />
+                        <GraphCard global={global}/>
                         {/* Stats card */}
                         <StatsCard global={global} countries={countries} />
                         {/* Form card */}
@@ -84,11 +81,11 @@ class App extends Component {
                       </React.Fragment>
                     )} />
                   </div>
-                  {/* </div> */}
                 </div>
               </div>
               {/* Country details components */}
               <Route path="/details" component={CountryDetail} />
+              {/* About page for the web application  */}
               <Route path="/about" component={About} />
             </div>
             </Router>
