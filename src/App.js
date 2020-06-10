@@ -1,129 +1,99 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './assets/main.css';
 import Header from './components/Header';
+import CountryDetail from './pages/CountryDetail';
+import GraphCard from './components/GraphCard';
+import StatsCard from './components/StatsCard';
+import FormCard from './components/FormCard';
+import ErrorMessage from './components/ErrorMessage';
+import About from './pages/About';
 
-function App() {
-  return (
-    <div className="App">
-      < Header />
+class App extends Component {
+    state = {
+      countries: [],
+      global: [],
+      totalNumberOfCountries: '',
+      loading: false,
+      errorMessage: '',
+      errorStatus: false,  
+    }
 
-      <div className="container mx-auto my-16">
-        {/* <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3"> */}
-          <div className="container max-w-full mx-auto py-6">
-            {/* <div className="max-w-full md:max-w-6xl md:px-2"> */}
-              <div className="relative block flex flex-col md:flex-row items-center">
+    async componentDidMount() {
+        // GET request using fetch with error handling
+        // fetch('https://api.npms.io/v2/invalid-url')
+        fetch('https://api.covid19api.com/summar')
+        .then(async response => {
+            const data = await response.json();
 
-                {/* Graph card */}
-                <div className="h-full max-w-md bg-white text-black border-b-4 border-yellow-500 rounded-lg shadow-inner shadow-lg overflow-hidden">
-                  <img className="w-full h-24 object-cover object-center rounded-t-lg" src="https://cdn.pixabay.com/photo/2020/04/28/06/57/medicine-5103043_960_720.jpg" alt="avatar" />
-                    <div className="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black lg:px-2">
-                        <h1 className="text-lg font-medium uppercase p-1 pb-0 text-center tracking-wide"> Summary Graph</h1>
-                        Stripe offers everything needed to run an online business
-                        at scale. Get in touch for details.
-                        Stripe offers everything needed to run an online business
-                        at scale. Get in touch for details.
-                        Stripe offers everything needed to run an online business
-                        at scale. Get in touch for details.
-                        Stripe offers everything needed to run an online business
-                        at scale. Get in touch for details.
-                        Stripe offers everything needed to run an online business
-                        at scale. Get in touch for details.
-                        Stripe offers everything needed to run an online business
-                        at scale. Get in touch for details.
-                    </div>
-                    <div className="flex flex-wrap mt-3 px-6"> </div>
-                    <div className="block flex items-center p-8  uppercase">
-                      {/* <button className="mt-3 text-lg font-semibold bg-black w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:bg-gray-700"> Select </button> */}
-                    </div>
-                </div>
+            // check for error response
+            if (!response.ok) {
+                // get error message from body or default to response statusText
+                const error = (data && data.message) || response.statusText;
+                return Promise.reject(error);
+            }
 
-                {/* Stats card */}
-                <div className="w-full h-full max-w-md sm:w-2/3 lg:w-1/2 sm:my-5 relative z-10 bg-white rounded-lg shadow-lg border-b-4 border-blue-500">
-                  <img className="w-full h-40 object-cover object-center rounded-t-lg" src="https://cdn.pixabay.com/photo/2020/04/03/19/02/virus-4999857_960_720.png" alt="avatar" />
-                    <div className="block text-left text-sm sm:text-md max-w-md mx-auto mt-12 text-black px-8 py-6 lg:px-6">
-                      <h1 className="text-lg font-medium uppercase p-3 pb-0 text-center tracking-wide"> Covid Summary</h1>
-                      Stripe offers everything needed to run an online business
-                          at scale. Get in touch for details.
-                          Stripe offers everything needed to run an online business
-                          at scale. Get in touch for details.
-                          Stripe offers everything needed to run an online business
-                          at scale. Get in touch for details.
-                          Stripe offers everything needed to run an online business
-                          at scale. Get in touch for details.
-                          Stripe offers everything needed to run an online business
-                          at scale. Get in touch for details.
-                          Stripe offers everything needed to run an online business
-                          at scale. Get in touch for details.
-                    </div>
-                    <div className="flex pl-12 justify-start sm:justify-start mt-3"></div>
+            this.setState({
+                // Seeting the values of countries and latest 
+                countries: data.Countries,
+                global: data.Global,    
+            });
 
-                    <div className="block flex items-center p-8  uppercase">
-                      {/* <button className="mt-3 text-lg font-semibold bg-black w-full text-white rounded-lg px-6 py-3 block shadow-xl hover:bg-gray-700"> Select </button> */}
-                    </div>
-                </div>
+        })
+        .catch(error => {
+            this.setState({
+                // Setting the error message from the Api 
+                errorMessage: error.toString(),
+                errorStatus: true
+            });
 
-                {/* Form card */}
-                <div className="h-full max-w-md bg-white text-black border-b-4 border-yellow-500 rounded-lg shadow-inner shadow-lg overflow-hidden">
-                  <img className="w-full h-24 object-cover object-center rounded-t-lg" src="https://cdn.pixabay.com/photo/2020/03/15/17/22/mask-4934337_960_720.jpg" alt="avatar" />
-                    {/* <div className="block text-left text-sm sm:text-md max-w-sm mx-auto mt-2 text-black lg:px-2"> */}
-                    <h1 className="text-lg font-medium uppercase p-3 pb-0 text-center tracking-wide"> Select a country</h1>
-                      <div class="Flexjustify-center text-lg p-3 mb-2 border-b-2 border-grey-100">
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">A</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">B</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">C</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">D</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">E</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">F</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">G</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">H</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">I</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">J</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">K</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">L</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">M</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">N</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">O</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">L</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">M</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">N</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">O</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">L</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">M</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">N</button>
-                        <button class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white font-bold py-1 px-2 rounded shadow-md">O</button>
-                      </div>
-                    {/* </div> */}
-                    {/* <div className="flex flex-wrap mt-3 px-6"> </div> */}
-                    <div className="block flex pb-56 uppercase overflow-y-auto">
-                      <ul className="dropdown-menu w-full relative text-gray-700 h-10">
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                        <li className=""><a className="bg-white hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">United States</a></li>
-                      </ul>
-                    </div>
+            setTimeout(function() {
+                // Setting the timer to remove error message
+                    this.setState({errorStatus: false});
+                }.bind(this),5000);
+
+        });
+
+    }
+
+
+    render() {
+        const { countries, global, errorMessage, errorStatus, countNUmberOfCountries } = this.state;
+
+        return (
+            <Router>
+            <div className="App">
+              {/* Header component */}
+              < Header />
+              {/* Error Messgae */}
+              <ErrorMessage errorMessage={errorMessage} errorStatus={errorStatus} />
+                {/* <h1>{countries.map(location => (
+                <li key={location.id}>{location.country}</li> //Always remember to pass a key whne mapping through a list
+              ))}</h1> */}
+              <div className="container mx-auto my-10">
+                <div className="container max-w-full mx-auto py-2">
+                  <div className="relative block flex flex-col md:flex-row items-center">
+                    <Route exact path="/" render={props => (
+                      <React.Fragment>
+                        {/* Graph Card */}
+                        <GraphCard />
+                        {/* Stats card */}
+                        <StatsCard global={global} countries={countries} />
+                        {/* Form card */}
+                        <FormCard />
+                      </React.Fragment>
+                    )} />
+                  </div>
+                  {/* </div> */}
                 </div>
               </div>
-            {/* </div> */}
-          </div>
-
-
-
-
-        </div>
-        
-    </div>
-  );
+              {/* Country details components */}
+              <Route path="/details" component={CountryDetail} />
+              <Route path="/about" component={About} />
+            </div>
+            </Router>
+        )
+    }
 }
 
-export default App;
+export default App
