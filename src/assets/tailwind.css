@@ -1,3 +1,41 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ddddd5;
+    background-image: url("./images/aircraft.png");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+.customBlueLight {
+    background-color: #ddddd5;
+}
+
+.cardBottomBorder {
+  border-bottom: 3px solid #413201;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+.gradientCardStyle{
+  background: rgb(221,218,214);
+  background: linear-gradient(166deg, rgba(221,218,214,1) 0%, rgba(219,219,219,1) 100%);
+}
+
+.brownTextColor {
+  color: #432f21
+}
+
+.redTextColor {
+  color: #ca171b
+}
+
+.brownBottomBorder {
+  border-bottom: 3px solid #d40e52;
+}
