@@ -41,7 +41,7 @@ function StatsCard({ global, countries }) {
 
 // Proptype to determine the type of prop being used
 StatsCard.propTypes = {
-    global: PropTypes.array.isRequired,
+    global: PropTypes.object.isRequired,
     countries: PropTypes.array.isRequired
 }
 

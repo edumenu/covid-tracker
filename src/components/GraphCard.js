@@ -10,22 +10,22 @@ function GraphCard({ global }) {
 
       const data = [
         {
-          name: 'New Confirmed', uv: 118555,
+          name: 'New Confirmed', uv: global['NewConfirmed'] ? global['NewConfirmed'] : 0,
         },
         {
-          name: 'Total Confirmed', uv: 3140269,
+          name: 'Total Confirmed', uv: global['TotalConfirmed'] ? global['TotalConfirmed'] : 0,
         },
         {
-          name: 'New Deaths', uv: 3039,
+          name: 'New Deaths', uv: global['NewDeaths'] ? global['NewDeaths'] : 0,
         },
         {
-          name: 'Total Deaths', uv: 410590,
+          name: 'Total Deaths', uv: global['TotalDeaths'] ? global['TotalDeaths'] : 0,
         },
         {
-          name: 'New Recovered', uv: 55087,
+          name: 'New Recovered', uv: global['NewConfirmed'] ? global['NewConfirmed'] : 0,
         },
         {
-          name: 'Total Recovered', uv: 7105522,
+          name: 'Total Recovered', uv: global['TotalRecovered'] ? global['TotalRecovered'] : 0,
         },
       ];  
 

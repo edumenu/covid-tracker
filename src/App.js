@@ -12,16 +12,27 @@ import About from './pages/About';
 class App extends Component {
     state = {
       countries: [],
-      global: [],
+      global: {},
       totalNumberOfCountries: '',
       loading: false,
       errorMessage: '',
-      errorStatus: false,  
+      errorStatus: false, 
     }
 
     async componentDidMount() {
+        // Calling the get function
+        // this.getCovidData();
+        this.setState({
+          // Seeting the values of countries and latest 
+          countries: JSON.parse(localStorage.getItem('countries')),  
+          global: JSON.parse(localStorage.getItem('global')),  
+      });
+
+    }
+
+    // Get request to fetch data
+    getCovidData(){
         // GET request using fetch with error handling
-        // fetch('https://api.npms.io/v2/invalid-url')
         fetch('https://api.covid19api.com/summar')
         .then(async response => {
             const data = await response.json();
@@ -39,6 +50,10 @@ class App extends Component {
                 global: data.Global,    
             });
 
+            // setter
+            localStorage.setItem('countries', JSON.stringify(data.Countries));
+            localStorage.setItem('global', JSON.stringify(data.Global));
+
         })
         .catch(error => {
             this.setState({
@@ -51,9 +66,7 @@ class App extends Component {
                 // Setting the timer to remove error message
                     this.setState({errorStatus: false});
                 }.bind(this),5000);
-
         });
-
     }
 
 
@@ -77,7 +90,7 @@ class App extends Component {
                         {/* Stats card */}
                         <StatsCard global={global} countries={countries} />
                         {/* Form card */}
-                        <FormCard />
+                        <FormCard global={global} countries={countries}/>
                       </React.Fragment>
                     )} />
                   </div>
