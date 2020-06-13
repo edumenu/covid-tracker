@@ -45,7 +45,7 @@ class App extends Component {
             }
 
             this.setState({
-                // Seeting the values of countries and latest 
+                // Setting the values of countries and latest 
                 countries: data.Countries,
                 global: data.Global,    
             });
@@ -58,7 +58,7 @@ class App extends Component {
         .catch(error => {
             this.setState({
                 // Setting the error message from the Api 
-                errorMessage: error.toString(),
+                errorMessage: "An error occured with the Covid Api. Please try again later",
                 errorStatus: true
             });
 

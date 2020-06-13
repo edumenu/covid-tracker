@@ -1,17 +1,62 @@
 import React, { useState, useEffect } from 'react'
+import ErrorMessage from '../components/ErrorMessage';
 
 const CountryDetail = () => {
     const [countryDetail, setCountryDetail] = useState([]);
+    const [moreCountryDetail, setMoreCountryDetail] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [errorStatus, seterrorStatus] = useState(false);
 
     useEffect(() => {
         setCountryDetail(JSON.parse(localStorage.getItem('countryDetail')))
+        fetchMoreCountryDetail((JSON.parse(localStorage.getItem('countryCode'))))
       },[]);
 
+      // This function is used to format the date
+      const formatDate = (countryDate) => {
+          var countryDate = new Date(countryDate)
+          return countryDate = countryDate.toLocaleDateString()
+      }
+
+      // This function fetch more information on a country
+      const fetchMoreCountryDetail= (countryCode) =>  {
+          // GET request using fetch with error handling
+        fetch(`https://restcountries.eu/rest/v2/alph/${countryCode}`)
+        .then(async response => {
+            const data = await response.json();
+            console.log(data)
+
+            // check for error response
+            if (!response.ok) {
+                // get error message from body or default to response statusText
+                const error = (data && data.message) || response.statusText;
+                return Promise.reject(error);
+            }
+
+            // Setting the values of countries and latest 
+            setMoreCountryDetail(data)  
+
+        })
+        .catch(error => {
+            // Setting the error message from the Api 
+            setErrorMessage("An error occured with the Country Api. Please try again later")
+            seterrorStatus(true)
+
+            setTimeout(function() {
+                // Setting the timer to remove error message
+                seterrorStatus(false)
+                }.bind(this),5000)
+        });
+      }
+
     return (
-        <React.Fragment>  
+        <React.Fragment>
+         {/* Error Messgae */}
+         <ErrorMessage errorMessage={errorMessage} errorStatus={errorStatus} />  
         <div className="bg-gray-100 rounded rounded-t-lg overflow-hidden object-center mx-auto shadow-lg max-w-3xl">
+            {/* {fetchMoreCountryDetail(countryDetail.CountryCode)} */}
             <div className="flex justify-center mt-8">
-                <img src={`https://www.countryflags.io/${countryDetail.CountryCode}/shiny/64.png`} alt="Country" className="h-24 rounded-md" />		
+                <img src={`https://www.countryflags.io/${countryDetail.CountryCode}/shiny/64.png`} alt="Country" className="h-32 rounded-md" />		
             </div>
             <div className="text-center px-3 pb-4">
                 <h1 className="text-black text-2xl bold font-sans">{ countryDetail.Country }</h1>
@@ -66,10 +111,10 @@ const CountryDetail = () => {
             
                 <div className="block flex overflow-y-auto px-10 py-3 text-gray-600">
                     <ul className="dropdown-menu w-full mb-64 relative text-gray-700 h-10">
-                        <li className="border-b-2 border-gray-100 p-2">Date: </li>
-                        <li className="border-b-2 border-gray-100 p-2">Population</li>
+                        <li className="border-b-2 border-gray-100 p-2">Date: {formatDate(countryDetail.Date)}</li>
+                        <li className="border-b-2 border-gray-100 p-2">Population: </li>
                         <li className="border-b-2 border-gray-100 p-2">Region</li>
-                        <li className="border-b-2 border-gray-100 p-2">Are</li>
+                        <li className="border-b-2 border-gray-100 p-2">Native language: </li>
                         <li className="border-b-2 border-gray-100 p-2">Lat:   long:</li>
                         <li className="border-b-2 border-gray-100 p-2">Number of active cases:</li>
                         <li className="border-b-2 border-gray-100 p-2">Number of Deaths:</li>
