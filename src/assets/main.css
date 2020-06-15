@@ -14345,18 +14345,18 @@ video {
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #ddddd5;
+  background-color: #03a3d2;
   background-image: url("./images/aircraft.png");
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
+}
+
+.backArrow{
+  background-image: url("./images/back.png");
 }
 
 .customBlueLight {
   background-color: #ddddd5;
-}
-
-.cardBottomBorder {
-  border-bottom: 3px solid #413201;
 }
 
 ::-webkit-scrollbar {
@@ -14369,16 +14369,8 @@ body {
   background: linear-gradient(166deg, rgba(221,218,214,1) 0%, rgba(219,219,219,1) 100%);
 }
 
-.brownTextColor {
-  color: #432f21
-}
-
 .redTextColor {
   color: #ca171b
-}
-
-.brownBottomBorder {
-  border-bottom: 3px solid #d40e52;
 }
 
 @media (min-width: 640px) {
