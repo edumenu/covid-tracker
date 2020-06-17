@@ -24,7 +24,7 @@ class App extends Component {
   async componentDidMount() {
     // Obtaining the counter in the local storage
     var counter = localStorage.getItem('counter')
-    if (counter < 20) {
+    if (counter > 0 && counter < 8) {
       this.setState({
         // Setting the values of countries and latest to the local storage
         // Setting the local storage when counter is less than 10. This prevents,

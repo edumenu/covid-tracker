@@ -9,7 +9,7 @@ function About() {
             <div className="p-2 pb-32 pb-2 ">
                 <p className="text-gray-600 my-4 p-4 font-bold"> This is a react web application built from scratch using tailwind css. All information on this web application 
                 were obtained from a <a className="text-indigo-500" href="https://covid-19-apis.postman.com/">Covid 19</a> and <a className="text-indigo-500" href="https://restcountries.eu/">Countries api</a>. Users can gather a summary of information of all
-                Covid 19 cases in every country all over the world. This application givers users the ability to search for countries individually to obtain more information. </p>
+                Covid 19 cases in every country all over the world. This application gives users the ability to search for countries individually to obtain more information. </p>
             </div>
         </div>
         </React.Fragment>

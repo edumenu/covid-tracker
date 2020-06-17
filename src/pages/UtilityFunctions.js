@@ -21,7 +21,8 @@ export const nativeLanguage = (languages) => {
 // Function for converting object to array
 export const convertObjectToArray = (latlng) => {
     let lat_long_array = []
-    latlng ? latlng.map((item) => { lat_long_array.push(item) }) : lat_long_array = ['N/A','N/A']
+    // if(latlng)  latlng.map((item) => { lat_long_array.push(item) })
+    latlng ? latlng.forEach(item => lat_long_array.push(item)) : lat_long_array = ['N/A','N/A']
     return lat_long_array
 }
 
