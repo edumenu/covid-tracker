@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './assets/main.css';
+import loader from './assets/images/spinnerload.gif';
+
 import Header from './components/Header';
 import CountryDetail from './pages/CountryDetail';
 import GraphCard from './components/GraphCard';
@@ -10,90 +12,120 @@ import ErrorMessage from './components/ErrorMessage';
 import About from './pages/About';
 
 class App extends Component {
-    state = {
-      countries: [],
-      global: [],
-      totalNumberOfCountries: '',
-      loading: false,
-      errorMessage: '',
-      errorStatus: false,  
+  state = {
+    countries: [],
+    global: {},
+    totalNumberOfCountries: '',
+    loading: true,
+    errorMessage: '',
+    errorStatus: false,
+  }
+
+  async componentDidMount() {
+    // Obtaining the counter in the local storage
+    var counter = localStorage.getItem('counter')
+    if (counter > 0 && counter < 8) {
+      this.setState({
+        // Setting the values of countries and latest to the local storage
+        // Setting the local storage when counter is less than 10. This prevents,
+        // multiple get requests
+        countries: JSON.parse(localStorage.getItem('countries')),
+        global: JSON.parse(localStorage.getItem('global')),
+
+      });
+      // increasing counter when it's less than 10
+      counter++
+      // Setting the new counter after increment
+      localStorage.setItem('counter', counter)
+    } else {
+      // Clear the locla storage and call the get function
+      localStorage.clear();
+      this.getCovidData();
     }
 
-    async componentDidMount() {
-        // GET request using fetch with error handling
-        // fetch('https://api.npms.io/v2/invalid-url')
-        fetch('https://api.covid19api.com/summar')
-        .then(async response => {
-            const data = await response.json();
+  }
 
-            // check for error response
-            if (!response.ok) {
-                // get error message from body or default to response statusText
-                const error = (data && data.message) || response.statusText;
-                return Promise.reject(error);
-            }
+  // Get request to fetch data
+  getCovidData() {
+    // GET request using fetch with error handling
+    fetch('https://api.covid19api.com/summary')
+      .then(async response => {
+        const data = await response.json();
+        this.loading = false
 
-            this.setState({
-                // Seeting the values of countries and latest 
-                countries: data.Countries,
-                global: data.Global,    
-            });
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response statusText
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
 
-        })
-        .catch(error => {
-            this.setState({
-                // Setting the error message from the Api 
-                errorMessage: error.toString(),
-                errorStatus: true
-            });
-
-            setTimeout(function() {
-                // Setting the timer to remove error message
-                    this.setState({errorStatus: false});
-                }.bind(this),5000);
-
+        this.setState({
+          // Setting the values of countries and latest 
+          countries: data.Countries,
+          global: data.Global,
         });
 
-    }
+        // setting the local values
+        localStorage.setItem('countries', JSON.stringify(data.Countries));
+        localStorage.setItem('global', JSON.stringify(data.Global));
+        localStorage.setItem('counter', 0);
+
+      })
+      .catch(error => {
+        this.setState({
+          // Setting the error message from the Api 
+          errorMessage: "An error occured with the Covid Api. Please try again later",
+          errorStatus: true
+        });
+
+        setTimeout(function () {
+          // Remove error message after 5 seconds
+          this.setState({ errorStatus: false });
+        }.bind(), 5000);
+      });
+  }
 
 
-    render() {
-        const { countries, global, errorMessage, errorStatus, countNUmberOfCountries } = this.state;
+  render() {
+    //  Setting the state values
+    const { countries, global, errorMessage, errorStatus } = this.state;
 
-        return (
-            <Router>
-            <div className="App">
-              {/* Header component */}
-              < Header />
-              {/* Error Messgae */}
-              <ErrorMessage errorMessage={errorMessage} errorStatus={errorStatus} />
-                {/* <h1>{countries.map(location => (
-                <li key={location.id}>{location.country}</li> //Always remember to pass a key whne mapping through a list
-              ))}</h1> */}
-              <div className="container mx-auto my-10">
-                <div className="container max-w-full mx-auto py-2">
-                  <div className="relative block flex flex-col md:flex-row items-center">
-                    <Route exact path="/" render={props => (
-                      <React.Fragment>
-                        {/* Graph Card */}
-                        <GraphCard />
-                        {/* Stats card */}
-                        <StatsCard global={global} countries={countries} />
-                        {/* Form card */}
-                        <FormCard />
-                      </React.Fragment>
-                    )} />
-                  </div>
-                  {/* </div> */}
+    return (
+      <Router>
+        <div className="App">
+          {/* Header component */}
+          < Header />
+          {/* Error Messgae  */}
+          <ErrorMessage errorMessage={errorMessage} errorStatus={errorStatus} />
+          <div className="container mx-auto">
+            <div className="container max-w-full mx-auto py-2">
+              {/* Loader image */}
+              {this.loading ? <img className="mx-auto my-auto" src={loader} alt="loading" /> :
+                <div className="relative block flex flex-col md:flex-row items-center">
+                  <Route exact path="/" render={props => (
+                    <React.Fragment>
+                      {/* Graphvard component */}
+                      <GraphCard global={global} />
+                      {/* Statscard component */}
+                      <StatsCard global={global} countries={countries} />
+                      {/* Formcard component */}
+                      <FormCard global={global} countries={countries} />
+                          }
+                    </React.Fragment>
+                  )} />
                 </div>
-              </div>
-              {/* Country details components */}
-              <Route path="/details" component={CountryDetail} />
-              <Route path="/about" component={About} />
+              }
             </div>
-            </Router>
-        )
-    }
+          </div>
+          {/* Country details components */}
+          <Route path="/details" component={CountryDetail} />
+          {/* About page for the web application  */}
+          <Route path="/about" component={About} />
+        </div>
+      </Router>
+    )
+  }
 }
 
 export default App
