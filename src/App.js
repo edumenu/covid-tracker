@@ -13,8 +13,8 @@ import About from './pages/About';
 
 class App extends Component {
   state = {
-    countries: [],
-    global: {},
+    countries: JSON.parse(localStorage.getItem('countries')) || [],
+    global: JSON.parse(localStorage.getItem('global')) || {},
     totalNumberOfCountries: '',
     loading: true,
     errorMessage: '',
@@ -24,17 +24,16 @@ class App extends Component {
   async componentDidMount() {
     // Obtaining the counter in the local storage
     var counter = localStorage.getItem('counter')
-    if (counter > 0 && counter < 8) {
-      this.setState({
-        // Setting the values of countries and latest to the local storage
-        // Setting the local storage when counter is less than 10. This prevents,
-        // multiple get requests
-        countries: JSON.parse(localStorage.getItem('countries')),
-        global: JSON.parse(localStorage.getItem('global')),
+    // Check for null counter
+    if(counter === null) this.getCovidData();
 
-      });
-      // increasing counter when it's less than 10
-      counter++
+    // Checking for counter less than 6 to prevent multiple calls to the api
+    if (counter < 6) {
+      this.setState({
+        // Increase counter by 1
+        counter: counter++,
+     });
+      // increasing counter when it's less than 8
       // Setting the new counter after increment
       localStorage.setItem('counter', counter)
     } else {
