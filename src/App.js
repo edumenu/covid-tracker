@@ -110,7 +110,6 @@ class App extends Component {
                       <StatsCard global={global} countries={countries} />
                       {/* Formcard component */}
                       <FormCard global={global} countries={countries} />
-                          }
                     </React.Fragment>
                   )} />
                 </div>
