@@ -6,7 +6,6 @@ function Header() {
 
   // This function switches isButtonVis from true to false and vice versa  
   const collapseAbout = () => {
-    console.log(isButtonVis)
       buttonVis ? setButtonVis(false) : setButtonVis(true)
   }
 

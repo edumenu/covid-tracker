@@ -123,8 +123,8 @@ const CountryDetail = (props) => {
                         <li className="text-gray-600 border-b-2 border-gray-100 p-1">Native language: {nativeLanguage(moreCountryDetail.languages)}</li>
                         <li className="text-gray-600 border-b-2 border-gray-100 p-1">Lat: {convertObjectToArray(moreCountryDetail.latlng)[0]} , long: {convertObjectToArray(moreCountryDetail.latlng)[1]}</li>
                         <li className="text-gray-600 border-b-2 border-gray-100 p-1">New Deaths: { countryDetail.NewDeaths ? countryDetail.NewDeaths : "0" }</li>
-                        <li className="text-gray-600 border-b-2 border-gray-100 p-1">New Confirmed: { countryDetail.NewConfirmed ? countryDetail.NewConfirmed: "0" }</li>
-                        <li className="text-gray-600 border-b-2 border-gray-100 p-1">New of Recovered: { countryDetail.NewRecovered ? countryDetail.NewRecovered : "0" }</li>
+                        <li className="text-gray-600 border-b-2 border-gray-100 p-1">New Confirmed cases: { countryDetail.NewConfirmed ? countryDetail.NewConfirmed: "0" }</li>
+                        <li className="text-gray-600 border-b-2 border-gray-100 p-1">New of Recovered cases: { countryDetail.NewRecovered ? countryDetail.NewRecovered : "0" }</li>
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="h-full max-w-md bg-white text-black border-b-4 border-yellow-400 rounded-lg shadow-inner shadow-lg overflow-hidden"
+  >
+    <img
+      alt="avatar"
+      class="w-full h-24 object-cover object-center rounded-t-lg"
+      src="https://cdn.pixabay.com/photo/2020/04/03/19/02/virus-4999857_960_720.png"
+    />
+    <h1
+      class="text-lg font-bold text-blue-400 p-3 pb-0 text-center tracking-wide"
+    >
+       Select a country
+    </h1>
+    <div
+      class="Flex justify-center text-lg p-3 mb-2"
+    >
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        A
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        B
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        C
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        D
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        E
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        F
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        G
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        H
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        I
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        J
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        K
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        L
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        M
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        N
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        O
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        P
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        Q
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        R
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        S
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        T
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        U
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        V
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        W
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        X
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        Y
+      </button>
+      <button
+        class="bg-white text-gray-600 hover:bg-blue-400 hover:text-white font-bold py-1 px-2 rounded shadow-md"
+      >
+        Z
+      </button>
+    </div>
+    <div
+      class="block flex pb-56 bg-white uppercase overflow-y-auto"
+    >
+      <ul
+        class="dropdown-menu w-full relative text-gray-700 h-10"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
