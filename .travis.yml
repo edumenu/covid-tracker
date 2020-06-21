@@ -5,8 +5,8 @@ services:
 
 # Build testing container
 before_install:
-    - docker build -t dynamisdevelopment/test-container -f .
+    - docker build -t edumenu/covid-tracker-container -f .
 
 # Run Tests
 script:
-    - docker run -e CI=true dynamisdevelopment/test-container npm test -- --coverage
+    - docker run -e CI=true edumenu/covid-tracker-container npm test -- --coverage
