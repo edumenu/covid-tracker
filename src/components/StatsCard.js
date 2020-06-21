@@ -35,8 +35,8 @@ function StatsCard({ global, countries }) {
             </div>
             <div className="flex p-4 pb-16 justify-start sm:justify-start">
                 <p className="text-gray-600 font-bold"> This Covid 19 tracker is obtaining information from  
-                <a className="text-indigo-500" href="https://covid19api.com/" target="_blank"> Covid 19 </a> and 
-                <a className="text-indigo-500" href="https://restcountries.eu/" target="_blank"> Countries </a> API which is updated daily.</p>
+                <a className="text-indigo-500" href="https://covid19api.com/" target="_blank" rel="noopener noreferrer"> Covid 19 </a> and 
+                <a className="text-indigo-500" href="https://restcountries.eu/" target="_blank" rel="noopener noreferrer"> Countries </a> API which is updated daily.</p>
             </div>
         </div>
     )

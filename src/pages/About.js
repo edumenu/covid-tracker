@@ -11,7 +11,8 @@ function About() {
                 severe underlying medical conditions like heart or lung disease or diabetes seem to be at higher risk for developing more serious
                   complications from COVID-19 illness.</p>
                 <p className="text-gray-600 p-4 font-bold"> This is a react web application built from scratch using tailwind css and all information on this application 
-                is obtained from a <a className="text-indigo-500" href="https://covid19api.com/" target="_blank">Covid 19</a> and <a className="text-indigo-500" href="https://restcountries.eu/" target="_blank">Countries api</a>. Users can gather a summary of information of all
+                is obtained from a <a className="text-indigo-500" href="https://covid19api.com/" target="_blank" rel="noopener noreferrer">Covid 19</a> and 
+                <a className="text-indigo-500" href="https://restcountries.eu/" target="_blank" rel="noopener noreferrer">Countries api</a>. Users can gather a summary of information of all
                 Covid 19 cases in every country all over the world. This application also gives users the ability to search for countries individually to obtain more information. </p>
             </div>
         </div>
