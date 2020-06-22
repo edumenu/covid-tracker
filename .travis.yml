@@ -5,7 +5,7 @@ services:
 
 # Build testing container
 before_install:
-    - docker build -t edumenu/react-tailwindcss -f .
+    - docker build -t edumenu/react-tailwindcss .
 
 # Run Tests
 script:
