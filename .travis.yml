@@ -9,4 +9,4 @@ before_install:
 
 # Run Tests
 script:
-    - docker run -e CI=true edumenu/react-tailwindcss npm test -- --coverage
+    - docker run -e CI=true edumenu/react-tailwindcss npm test
