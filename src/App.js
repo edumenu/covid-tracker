@@ -15,7 +15,6 @@ class App extends Component {
   state = {
     countries: JSON.parse(localStorage.getItem('countries')) || [],
     global: JSON.parse(localStorage.getItem('global')) || {},
-    totalNumberOfCountries: '',
     loading: true,
     errorMessage: '',
     errorStatus: false,

@@ -7,7 +7,7 @@ function StatsCard({ global, countries }) {
     return (
         <div className="w-full h-full max-w-md sm:w-2/3 lg:w-1/2 my-5 relative z-10  rounded-lg shadow-lg border-b-4 border-yellow-400 bg-white">
             <img className="w-full h-40 object-cover object-center rounded-t-lg" src="https://cdn.pixabay.com/photo/2020/04/03/19/02/virus-4999857_960_720.png" alt="avatar" />
-            <h1 className="text-lg font-bold text-blue-400 uppercase p-3 pb-0 text-center tracking-wide"> Covid Summary</h1>
+            <h1 className="text-lg font-bold text-blue-400 uppercase p-3 pb-0 text-center tracking-wide">Summary of cases worldwide</h1>
             <div className="flex block overflow-y-auto pb-12 text-left text-sm sm:text-md max-w-md mx-auto mt-2 text-black px-8 py-6 lg:px-6">
 
                 <div className="sm:grid sm:h-32 w-full sm:grid-flow-row sm:gap-6 sm:grid-cols-2">
@@ -33,10 +33,10 @@ function StatsCard({ global, countries }) {
                 </div>
 
             </div>
-            <div className="flex p-4 pb-16 justify-start sm:justify-start">
-                <p className="text-gray-600 font-bold"> COVID-19 is caused by a coronavirus called SARS-CoV-2. Older adults and people who have
-                severe underlying medical conditions like heart or lung disease or diabetes seem to be at higher risk for developing more serious
-                  complications from COVID-19 illness. </p>
+            <div className="flex p-4 pb-32 justify-start sm:justify-start">
+                <p className="text-gray-600 font-bold"> This Covid 19 tracker is obtaining information from  
+                <a className="text-indigo-500" href="https://covid19api.com/" target="_blank" rel="noopener noreferrer"> Covid 19 </a> and 
+                <a className="text-indigo-500" href="https://restcountries.eu/" target="_blank" rel="noopener noreferrer"> Countries </a> API which is updated daily.</p>
             </div>
         </div>
     )
