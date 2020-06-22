@@ -10,3 +10,4 @@ before_install:
 # Run Tests
 script:
     - docker run -e CI=true edumenu/covid-tracker-container npm test -- --coverage
+
