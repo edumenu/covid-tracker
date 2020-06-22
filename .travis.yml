@@ -1,0 +1,12 @@
+language: generic 
+sudo: required
+services:
+    - docker 
+
+# Build testing container
+before_install:
+    - docker build -t edumenu/react-tailwindcss -f .
+
+# Run Tests
+script:
+    - docker run -e CI=true edumenu/react-tailwindcss npm test -- --coverage
