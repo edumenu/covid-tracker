@@ -1,9 +1,12 @@
 version: '3'
 services: 
     web: 
+        stdin_open: true # docker run -i. Interactive mode (-it) to avoid react-scripits from exiting 
+        tty: true        # docker run -t. Interactive mode (-it) to avoid react-scripits from exiting  
         build: 
             context: .
             dockerfile: Dockerfile.dev
+        image: edumenu/react-tailwindcss
         ports:
             - "3000:3000"
         volumes:
