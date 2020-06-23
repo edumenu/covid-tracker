@@ -1,16 +1,21 @@
+# Requires the user to be with elevated permission
 sudo: required
 
+# Specify the language to be used for this build
 language: node_js
 node_js:
     - 10 
+
+# Setting an instance of docker for this build     
 services:
     - docker 
 
-# Build testing container
+# Building a docker image from the dockerfile.dev file and tagging it to edumenu/react-tailwindcss
 before_install:
     - docker build -t edumenu/react-tailwindcss -f Dockerfile.dev .
     - docker ps -a
 
-# Run Tests
+# Run a test image edumenu/react-tailwindcss
+# Since npm test never stops by default, we’ll add the --coverage flag so it’ll give a code report and only run once.
 script:
     - docker run -e CI=true edumenu/react-tailwindcss npm run test -- --coverage
