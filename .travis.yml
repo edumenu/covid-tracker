@@ -4,7 +4,7 @@ sudo: required
 # Specify the language to be used for this build
 language: node_js
 node_js:
-    - "stable"
+    - 10
 
 # Setting an instance of docker for this build     
 services:
