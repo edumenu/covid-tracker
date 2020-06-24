@@ -1,5 +1,5 @@
 # Setting the base image for our container
-FROM node:alpine as builder
+FROM node:alpine
 
 # Setting the working directory
 WORKDIR '/app'
