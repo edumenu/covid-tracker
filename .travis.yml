@@ -13,9 +13,20 @@ services:
 # Building a docker image from the dockerfile.dev file and tagging it to edumenu/react-tailwindcss
 before_install:
     - docker build -t edumenu/react-tailwindcss -f Dockerfile.dev .
-    - docker ps -a
 
 # Run a test image edumenu/react-tailwindcss
 # Since npm test never stops by default, we’ll add the --coverage flag so it’ll give a code report and only run once.
 script:
     - docker run -e CI=true edumenu/react-tailwindcss npm run test -- --coverage
+
+# Deploying the app to aws
+deploy:
+    provider: elasticbeanstalk
+    access_key_id:
+      secure: "$AWS_ACCESS_KEY"
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
+    region: "us-east-2"
+    app: "Docker-react-covid-tracker"
+    env: "DockerReactCovidTracker-env"
+    bucket_name: "elasticbeanstalk-us-east-2-492261512221"
