@@ -4,9 +4,6 @@ FROM node:10.16.0-alpine as builder
 # Setting the working directory
 WORKDIR '/app'
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
 # Installing react app dependencies
 COPY ./package.json ./
 COPY package-lock.json ./
