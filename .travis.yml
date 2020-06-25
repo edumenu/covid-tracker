@@ -20,14 +20,14 @@ script:
     - docker run -e CI=true edumenu/react-tailwindcss npm run test -- --coverage
 
 # Deploying the app to aws
-# deploy:
-#     provider: elasticbeanstalk
-#     access_key_id: $AWS_ACCESS_KEY
-#     secret_access_key: $AWS_SECRET_KEY
-#     region: "us-east-2"
-#     app: "Docker-react-covid-tracker"
-#     env: "DockerReactCovidTracker-env"
-#     bucket_name: "elasticbeanstalk-us-east-2-492261512221"
-#     bucket_path: "Docker-react-covid-tracker"
-#     on:
-#         branch: master
+deploy:
+    provider: elasticbeanstalk
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    region: "us-east-2"
+    app: "covid-tracker-react-app"
+    env: "CovidTrackerReactApp-env"
+    bucket_name: "elasticbeanstalk-us-east-2-492261512221"
+    bucket_path: "covid-tracker-react-app"
+    on:
+        branch: master
