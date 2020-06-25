@@ -12,12 +12,15 @@ services:
 
 # Building a docker image from the dockerfile.dev file and tagging it to edumenu/react-tailwindcss
 before_install:
-    - docker build -t edumenu/react-tailwindcss -f Dockerfile.dev .
+    - docker pull edumenu/react-tailwindcss
+    - dcoker run -d -p 127.0.0.1:3001:3000 edumenu/react-tailwindcss
+    - dokcer ps -a
+    - docker run edumenu/react-tailwindcss  
 
 # Run a test image edumenu/react-tailwindcss
 # Since npm test never stops by default, we’ll add the --coverage flag so it’ll give a code report and only run once.
-script:
-    - docker run -e CI=true edumenu/react-tailwindcss npm run test -- --coverage
+script: 
+    - - docker run -e CI=true wilpat/sample-app npm run test -- --coverage
 
 # Deploying the app to aws
 deploy:
