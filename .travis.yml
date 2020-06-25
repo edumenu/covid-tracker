@@ -4,13 +4,13 @@ sudo: required
 # Specify the language to be used for this build
 language: node_js
 node_js:
-    - 10.16
+    - "stable"
 
 # Setting an instance of docker for this build     
 services:
     - docker 
 
-# Building a docker image from the dockerfile.dev file and tagging it to edumenu/react-tailwindcss
+# Building a docker image from the dockerfile.dev and tagging it to edumenu/react-tailwindcss
 before_install:
     - docker pull edumenu/react-tailwindcss
     - docker run -d -p 127.0.0.1:3001:3000 edumenu/react-tailwindcss
