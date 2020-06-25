@@ -4,7 +4,7 @@ sudo: required
 # Specify the language to be used for this build
 language: node_js
 node_js:
-    - 10
+    - 10.16
 
 # Setting an instance of docker for this build     
 services:
@@ -20,11 +20,14 @@ script:
     - docker run -e CI=true edumenu/react-tailwindcss npm run test -- --coverage
 
 # Deploying the app to aws
-deploy:
-    provider: elasticbeanstalk
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
-    region: "us-east-2"
-    app: "Docker-react-covid-tracker"
-    env: "DockerReactCovidTracker-env"
-    bucket_name: "elasticbeanstalk-us-east-2-492261512221"
+# deploy:
+#     provider: elasticbeanstalk
+#     access_key_id: $AWS_ACCESS_KEY
+#     secret_access_key: $AWS_SECRET_KEY
+#     region: "us-east-2"
+#     app: "Docker-react-covid-tracker"
+#     env: "DockerReactCovidTracker-env"
+#     bucket_name: "elasticbeanstalk-us-east-2-492261512221"
+#     bucket_path: "Docker-react-covid-tracker"
+#     on:
+#         branch: master
