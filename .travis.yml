@@ -29,7 +29,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     region: "us-east-2"
     app: "covid-tracker-react-app"
-    env: "CovidTrackerReactApp-env"
+    env: "CovidTrackerReactApp-env-1"
     bucket_name: "elasticbeanstalk-us-east-2-492261512221"
     bucket_path: "covid-tracker-react-app"
     on:
