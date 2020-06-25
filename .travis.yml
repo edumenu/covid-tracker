@@ -20,7 +20,7 @@ before_install:
 # Run a test image edumenu/react-tailwindcss
 # Since npm test never stops by default, we’ll add the --coverage flag so it’ll give a code report and only run once.
 script: 
-    - - docker run -e CI=true wilpat/sample-app npm run test -- --coverage
+    - - docker run -e CI=true edumenu/react-tailwindcss npm run test -- --coverage
 
 # Deploying the app to aws
 deploy:
