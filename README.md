@@ -1,6 +1,6 @@
 ## Covid Tracker
 
-This is a react/tailwindcss application used to obtain information on Covid 19 cases in countries all over the world.
+This is a react/tailwindcss application used to obtain information on Covid 19 cases in countries all over the world. Here's a link to a live project http://covidtrackerreactapp-env-1.eba-y2hvhh26.us-east-2.elasticbeanstalk.com/
 
 ## Project Status
 
