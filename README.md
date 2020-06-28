@@ -41,3 +41,5 @@ To Visit App:
 This was a side project I created during the Covid 19 outbreak. I created this project for people to use and track Covid 19 cases all over the world. This project obtains all it's data from https://covid19api.com/ and https://restcountries.eu/ API.
 
 I built this project by using `create-react-app` boilerplate, then I installed tailwindcss to build the UI (I used this link https://www.smashingmagazine.com/2020/02/tailwindcss-react-project/ for settting up tailwindcss on react). The technologies implemented in this project are React, React-Router, JSX, and tailwindCSS.
+
+For deployment, I used docker to containerize this app and included both Docker files, connected this repository to Travis CI for continues integration using the travis.yml file and then uploaded it onto AWS Beanstalk
