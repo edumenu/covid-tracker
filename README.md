@@ -10,7 +10,7 @@ This project is complete
 
 #### Example:   
 
-![alt text](https://github.com/edumenu/covid-tracker/covid-tracker1.png)
+![alt text](https://github.com/edumenu/covid-tracker/blob/master/covid-tracker1.png?raw=true "Home page")
 
 [ PRETEND OTHER SCREEN SHOT IS HERE ]
 
