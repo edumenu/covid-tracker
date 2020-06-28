@@ -22,7 +22,7 @@ before_install:
 script: 
     - docker run -e CI=true edumenu/react-tailwindcss npm run test -- --coverage
 
-# Deploying the app to aws
+# Deploying the covid-tracker app to aws
 deploy:
     provider: elasticbeanstalk
     access_key_id: $AWS_ACCESS_KEY
