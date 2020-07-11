@@ -27,7 +27,7 @@ class App extends Component {
     if(counter === null) this.getCovidData();
 
     // Checking for counter less than 6 to prevent multiple calls to the api
-    if (counter < 6) {
+    if (counter < 10) {
       this.setState({
         // Increase counter by 1
         counter: counter++,
@@ -37,7 +37,11 @@ class App extends Component {
       localStorage.setItem('counter', counter)
     } else {
       // Clear the locla storage and call the get function
-      localStorage.clear();
+      localStorage.removeItem('countries');
+      localStorage.removeItem('countryCode');
+      localStorage.removeItem('countryDetail');
+      localStorage.removeItem('global');
+      localStorage.removeItem('counter');
       this.getCovidData();
     }
 
